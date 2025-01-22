@@ -1,0 +1,12 @@
+schemaVersion: 1.0
+endpoints:
+ - name: greet
+   displayName: greet
+   service:
+     basePath: /greet
+     port: 9090
+   type: REST
+   networkVisibilities: 
+    - Public
+    - Project
+   schemaFilePath: specs/service.yaml
