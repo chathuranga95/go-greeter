@@ -8,13 +8,14 @@ import (
 
 // Response structure for JSON format
 type Response struct {
-	Hello string `json:"hello"`
-	Port  int    `json:"port"`
+	Hello   string `json:"hello"`
+	Port    int    `json:"port"`
+	Version string `json:"version"`
 }
 
 // Handler for the first service on port 9090
 func handler(w http.ResponseWriter, r *http.Request) {
-	response := Response{Hello: "world", Port: 9090}
+	response := Response{Hello: "world", Port: 9090, Version: "v1.0"}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
 }
