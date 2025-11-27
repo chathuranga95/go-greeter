@@ -2,8 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
+	"time"
 )
 
 // Response structure for JSON format
@@ -15,8 +16,10 @@ type Response struct {
 
 // Handler for the first service on port 9090
 func handler(w http.ResponseWriter, r *http.Request) {
-	response := Response{Hello: "world", Port: 9090, Version: "v1.1"}
+	response := Response{Hello: "world", Port: 9090, Version: "v1.0"}
 	w.Header().Set("Content-Type", "application/json")
+	log.Printf("Greet service is called at %s\n",
+		time.Now().Format(time.RFC3339))
 	json.NewEncoder(w).Encode(response)
 }
 
@@ -25,8 +28,9 @@ func main() {
 	http.HandleFunc("/greet", handler)
 	go func() {
 		if err := http.ListenAndServe(":9090", nil); err != nil {
-			fmt.Printf("Error starting server on port 9090: %v\n", err)
+			log.Printf("Error starting server on port 9090: %v\n", err)
 		}
+		log.Println("Server started on port 9090")
 	}()
 
 	// Prevent the main function from exiting

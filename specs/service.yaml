@@ -8,9 +8,9 @@ servers:
   - url: http://localhost:9090
 
 paths:
-  /service1:
+  /greet:
     get:
-      summary: Get Hello World message from Service 1 - mock update
+      summary: Get Hello World message
       description: Returns a JSON object with a greeting message and the port number.
       responses:
         '200':
@@ -22,7 +22,14 @@ paths:
                 properties:
                   hello:
                     type: string
-                    example: mock world 1
+                    example: world
                   port:
                     type: integer
                     example: 9090
+                  version:
+                    type: string
+                    example: v1.0
+                required:
+                  - hello
+                  - port
+                  - version
