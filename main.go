@@ -16,7 +16,7 @@ type Response struct {
 
 // Handler for the first service on port 9090
 func handler(w http.ResponseWriter, r *http.Request) {
-	response := Response{Hello: "world", Port: 9090, Version: "v1.0"}
+	response := Response{Hello: "world", Port: 9090, Version: "v1.1"}
 	w.Header().Set("Content-Type", "application/json")
 	log.Printf("Greet service is called at %s\n",
 		time.Now().Format(time.RFC3339))
