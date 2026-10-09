@@ -1,0 +1,9 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: go-greeter
+endpoints:
+  - name: http
+    port: 9090
+    type: HTTP
+    visibility:
+      - external
